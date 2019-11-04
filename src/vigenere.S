@@ -15,7 +15,7 @@
 # otherwise return it as-is
 to_uppercase:
     push    ebp
-	mov     ebp, esp
+    mov     ebp, esp
     mov     eax, DWORD PTR[ebp + 0x8]
     mov     BYTE PTR[ebp + 0x8], al
     cmp     BYTE PTR[ebp + 0x8], 0x60
@@ -29,12 +29,12 @@ _copy_and_return:
     movzx   eax, BYTE PTR[ebp + 0x8]
 _no_modification:
     mov     esp, ebp
-	pop     ebp
+    pop     ebp
     ret
 
 is_uppercase:
     push    ebp
-	mov     ebp, esp
+    mov     ebp, esp
     mov     eax, DWORD PTR[ebp + 0x8]
     mov     BYTE PTR[ebp + 0x8], al
     cmp     BYTE PTR[ebp + 0x8], 0x40
@@ -47,7 +47,7 @@ _not_uppercase:
     xor     eax, eax
 _done:    
     mov     esp, ebp
-	pop     ebp
+    pop     ebp
     ret
 
 # [ebp + 0x8]     input
@@ -55,7 +55,7 @@ _done:
 # [ebp + 0x10]    output
 vigenere_encrypt:
     push    ebp
-	mov     ebp, esp
+    mov     ebp, esp
 # Return if any of the parameters is null
     cmp     DWORD PTR[ebp + 0x8], 0x0
     je      _end
@@ -112,5 +112,5 @@ _skip:
 _end:
     xor     eax, eax                    # Return value is always 0
     mov     esp, ebp
-	pop     ebp
-	ret
+    pop     ebp
+    ret
